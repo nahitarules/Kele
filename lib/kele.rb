@@ -47,4 +47,9 @@ class Kele
       })
     puts "Message sent" if response.success?
   end
+
+  def get_remaining_checkpoints(chain_id)
+    response = self.class.get("/enrollment_chains/#{chain_id}/checkpoints_remaining_in_section", headers: { "authorization" => @user_auth_token})
+    JSON.parse(response.body)
+  end
 end
